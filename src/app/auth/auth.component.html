@@ -1,0 +1,16 @@
+<div class="auth-container">
+  <form [formGroup]="form" (ngSubmit)="submit()" >
+    <div class="auth-control">
+      <label>Email</label>
+      <input type="text" placeholder="Email" formControlName="email">
+      <div class="validation"></div>
+    </div>
+
+    <div class="auth-control">
+      <label>Пароль</label>
+      <input type="password" placeholder="Пароль" formControlName="password">
+      <div class="validation"></div>
+    </div>
+    <button class="auth-btn-submit" type="submit">Submit</button>
+  </form>
+</div>
