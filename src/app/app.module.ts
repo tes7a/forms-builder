@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AccordionComponent } from './accordion/accordion.component';
 import { FormBuilderComponent } from './form-builder/form-builder.component';
@@ -28,6 +29,7 @@ import { AuthComponent } from './auth/auth.component';
     CdkAccordionModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

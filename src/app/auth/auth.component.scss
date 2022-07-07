@@ -1,6 +1,10 @@
-.auth-container {
-  .auth-control {
+.auth-block {
+  width: 300px;
 
+  .auth-control {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
   }
 
   .auth-btn-submit {
