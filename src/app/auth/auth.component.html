@@ -1,5 +1,5 @@
 <div class="auth-block">
-  <form [formGroup]="form" (ngSubmit)="submit()" >
+  <form [formGroup]="form">
     <div class="auth-control">
       <label>Email:</label>
       <input type="text" placeholder="Email" formControlName="email">
@@ -13,6 +13,4 @@
     </div>
     <button class="auth-btn-submit" type="submit" (click)="onLogin()">Submit</button>
   </form>
-
-  <button (click)="getData()">load</button>
 </div>

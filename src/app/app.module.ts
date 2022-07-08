@@ -12,7 +12,11 @@ import { AccordionComponent } from './accordion/accordion.component';
 import { FormBuilderComponent } from './form-builder/form-builder.component';
 import { DragSectionComponent } from './drag-section/drag-section.component';
 import { AuthComponent } from './auth/auth.component';
+import { RoutingModule } from './routing.module';
+import { BuilderComponent } from './builder/builder.component';
+import { ErrComponent } from './err/err.component';
 
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +24,8 @@ import { AuthComponent } from './auth/auth.component';
     FormBuilderComponent,
     DragSectionComponent,
     AuthComponent,
+    BuilderComponent,
+    ErrComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +36,7 @@ import { AuthComponent } from './auth/auth.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    RoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

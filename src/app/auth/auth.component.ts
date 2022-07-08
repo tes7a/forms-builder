@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from './services/auth-service.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class AuthComponent {
     password: new FormControl(''),
   });
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private route: Router) {
   }
 
   onLogin(): void {
@@ -24,21 +25,8 @@ export class AuthComponent {
     this.authService
       // @ts-ignore
       .login(this.form.get('email')?.value, this.form.get('password')?.value)
-      .subscribe((res) => {
-        console.log(res);
-      });
-  }
-
-  submit(): void {
-    const formData = { ...this.form.value };
-
-    console.log(formData);
-  }
-
-  getData() {
-    this.authService.onSetData()
-      .subscribe((res) => {
-        console.log(res);
+      .subscribe(() => {
+        this.route.navigate(['']);
       });
   }
 }
