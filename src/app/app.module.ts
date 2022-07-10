@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AppComponent } from './app.component';
 import { AccordionComponent } from './accordion/accordion.component';
 import { FormBuilderComponent } from './form-builder/form-builder.component';
@@ -37,6 +38,7 @@ import { ErrComponent } from './err/err.component';
     FormsModule,
     HttpClientModule,
     RoutingModule,
+    DragDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

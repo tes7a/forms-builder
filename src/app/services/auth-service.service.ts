@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs';
-import { APIService } from '../../api/api-service.service';
+import { APIService } from './api-service.service';
 
 @Injectable({
   providedIn: 'root',

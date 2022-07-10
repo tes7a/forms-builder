@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from './services/auth-service.service';
+import { AuthService } from '../services/auth-service.service';
 
 @Component({
   selector: 'app-auth',
@@ -23,8 +23,7 @@ export class AuthComponent {
     }
 
     this.authService
-      // @ts-ignore
-      .login(this.form.get('email')?.value, this.form.get('password')?.value)
+      .login(this.form.get('email')?.value || '', this.form.get('password')?.value || '')
       .subscribe(() => {
         this.route.navigate(['']);
       });
