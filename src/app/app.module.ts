@@ -15,9 +15,7 @@ import { DragSectionComponent } from './drag-section/drag-section.component';
 import { AuthComponent } from './auth/auth.component';
 import { RoutingModule } from './routing.module';
 import { BuilderComponent } from './builder/builder.component';
-import { ErrComponent } from './err/err.component';
 
-// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +24,6 @@ import { ErrComponent } from './err/err.component';
     DragSectionComponent,
     AuthComponent,
     BuilderComponent,
-    ErrComponent,
   ],
   imports: [
     BrowserModule,
