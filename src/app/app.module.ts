@@ -8,6 +8,10 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { AppComponent } from './app.component';
 import { AccordionComponent } from './accordion/accordion.component';
 import { FormBuilderComponent } from './form-builder/form-builder.component';
@@ -36,6 +40,10 @@ import { BuilderComponent } from './builder/builder.component';
     HttpClientModule,
     RoutingModule,
     DragDropModule,
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

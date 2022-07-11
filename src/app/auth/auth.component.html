@@ -1,14 +1,31 @@
 <div class="auth-block">
   <form [formGroup]="form">
-    <div class="auth-control">
-      <label>Email:</label>
-      <input type="text" placeholder="Email" formControlName="email">
-    </div>
 
-    <div class="auth-control">
-      <label>Password:</label>
-      <input type="password" placeholder="Пароль" formControlName="password">
+    <mat-form-field class="auth-control">
+      <mat-label>Email</mat-label>
+      <input type="email" formControlName="email" matInput placeholder="Ex. pat@example.com">
+      <mat-error *ngIf="form.get('email')?.hasError('email') && !form.get('email')?.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="form.get('email')?.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="auth-control">
+      <mat-label>Password</mat-label>
+      <input formControlName="password" type="password" matInput placeholder="Ex. Password">
+      <mat-error *ngIf="form.get('password')?.hasError('minlength') && !form.get('password')?.hasError('required')">
+        Please enter correct password
+      </mat-error>
+      <mat-error *ngIf="form.get('password')?.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <div class="auth-btn-container">
+      <button [disabled]="form.invalid" mat-raised-button color="primary" class="auth-btn-submit" type="submit"
+        (click)="onLogin()">Submit</button>
     </div>
-    <button class="auth-btn-submit" type="submit" (click)="onLogin()">Submit</button>
   </form>
 </div>

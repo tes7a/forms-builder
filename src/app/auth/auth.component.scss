@@ -2,13 +2,21 @@
   width: 300px;
 
   .auth-control {
-    margin-bottom: 15px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+
+    margin-bottom: 15px;
   }
 
   .auth-btn-submit {
-    height: 30px;
+    height: 34px;
     width: 80px;
+
+    margin-top: 15px;
+  }
+
+  .auth-btn-container {
+    display: flex;
+    justify-content: center;
   }
 }
