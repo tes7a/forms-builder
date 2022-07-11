@@ -1,0 +1,16 @@
+.builder-container {
+  display: flex;
+;
+
+  .builder-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .drag-section {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
