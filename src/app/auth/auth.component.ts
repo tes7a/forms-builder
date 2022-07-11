@@ -22,6 +22,7 @@ export class AuthComponent {
       return;
     }
 
+    /sdasdasdsa
     this.authService
       .login(this.form.get('email')?.value || '', this.form.get('password')?.value || '')
       .subscribe(() => {
