@@ -1,7 +1,6 @@
-<div class="drag-container">
-  <input cdkDrag/>
-  <textarea cdkDrag></textarea>
-  <button cdkDrag>Button</button>
-  <input type="checkbox" cdkDrag label="label">
-  <select cdkDrag></select>
+<div class="drag-container" >
+  <ul class="elements-list" cdkDropList [cdkDropListData]="elements">
+    <li class="element" *ngFor="let item of elements" cdkDrag>{{item.name}}</li>
+  </ul>
 </div>
+
