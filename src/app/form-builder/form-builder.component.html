@@ -1,3 +1,3 @@
-<ul class="form-builder-container" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="elementsBuilder">
-  <li *ngFor="let item of elementsBuilder" cdkDrag>{{item.name}}</li>
+<ul class="form-builder-container" cdkDropList (cdkDropListDropped)="onDrop($event)" [cdkDropListData]="formBuilderArray$ | async">
+  <li *ngFor="let item of formBuilderArray$ | async" cdkDrag>{{item}}</li>
 </ul>

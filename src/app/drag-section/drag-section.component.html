@@ -1,6 +1,6 @@
 <div class="drag-container" >
-  <ul class="elements-list" cdkDropList [cdkDropListData]="elements">
-    <li class="element" *ngFor="let item of elements" cdkDrag>{{item.name}}</li>
+  <ul class="elements-list" cdkDropList [cdkDropListData]="dragArray$ | async">
+    <li class="element" *ngFor="let item of dragArray$ | async" cdkDrag>{{item}}</li>
   </ul>
 </div>
 

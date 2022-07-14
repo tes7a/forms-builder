@@ -1,26 +1,27 @@
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
-import { ElementsBuilderType } from './elements';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { selectFormBuilderArray } from '../reducers/actions/builder-actions';
 
 @Component({
   selector: 'app-form-builder',
   templateUrl: './form-builder.component.html',
   styleUrls: ['./form-builder.component.scss'],
 })
-export class FormBuilderComponent implements OnInit {
-  elementsBuilder: ElementsBuilderType[] = [];
+export class FormBuilderComponent {
+  formBuilderArray$ = this.store.select(selectFormBuilderArray);
 
-  constructor() { }
+  constructor(private store: Store) { }
 
-  ngOnInit(): void {
-  }
-
-  drop(event: CdkDragDrop<ElementsBuilderType[]>): void {
-    transferArrayItem(
-      event.previousContainer.data,
-      event.container.data,
-      event.previousIndex,
-      event.currentIndex,
-    );
+  // eslint-disable-next-line class-methods-use-this
+  onDrop(event: CdkDragDrop<string[] | null>): void {
+    if (event.container.data && event.previousContainer.data) {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
   }
 }
