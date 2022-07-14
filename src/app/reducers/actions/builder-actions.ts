@@ -5,12 +5,21 @@ import {
 export const map = createAction('[BUILDER] map');
 
 export interface BuilderState {
-  dragArray: string[],
-  formBuilderArray: string[] | null,
+  dragArray: {
+    name: string,
+    nameHTMLEl: string
+  }[],
+  formBuilderArray: {
+    name: string,
+    nameHTMLEl: string
+  }[] | null,
 }
 
 export const initialState: BuilderState = {
-  dragArray: ['Button', 'Input', 'CheckBox'],
+  dragArray: [
+    { name: 'Button', nameHTMLEl: '<button>Button</button>' },
+    { name: 'Input', nameHTMLEl: '<input/>' },
+    { name: 'CheckBox', nameHTMLEl: '<input type="checkbox"/>' }],
   formBuilderArray: [],
 };
 
