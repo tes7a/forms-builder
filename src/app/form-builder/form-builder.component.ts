@@ -1,7 +1,6 @@
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { selectFormBuilderArray } from '../reducers/actions/builder-actions';
+import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-form-builder',
@@ -9,10 +8,12 @@ import { selectFormBuilderArray } from '../reducers/actions/builder-actions';
   styleUrls: ['./form-builder.component.scss'],
 })
 export class FormBuilderComponent {
-  formBuilderArray$ = this.store.select(selectFormBuilderArray);
+  @Input() formBuilderArray$!: Observable<{
+    name: string;
+    nameHTMLEl: string;
+  }[] | null>;
 
-  constructor(private store: Store) {
-  }
+  constructor() { }
 
   onDrop(event: CdkDragDrop<{
     name: string,

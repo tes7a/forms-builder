@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { selectDragArray } from '../reducers/actions/builder-actions';
+import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-drag-section',
@@ -8,8 +7,10 @@ import { selectDragArray } from '../reducers/actions/builder-actions';
   styleUrls: ['./drag-section.component.scss'],
 })
 export class DragSectionComponent {
-  dragArray$ = this.store.select(selectDragArray);
+  @Input() dragArray$!: Observable<{
+    name: string;
+    nameHTMLEl: string;
+  }[]>;
 
-  constructor(private store: Store) { }
-
+  constructor() { }
 }
