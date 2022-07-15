@@ -18,8 +18,15 @@ export interface BuilderState {
 export const initialState: BuilderState = {
   dragArray: [
     { name: 'Button', nameHTMLEl: '<button>Button</button>' },
-    { name: 'Input', nameHTMLEl: '<input/>' },
-    { name: 'CheckBox', nameHTMLEl: '<input type="checkbox"/>' }],
+    { name: 'Input', nameHTMLEl: '<input placeholder="Text"/>' },
+    { name: 'CheckBox', nameHTMLEl: '<input type="checkbox"/> <label>Options</label>' },
+    { name: 'Textarea', nameHTMLEl: '<textarea placeholder="Text"></textarea>' },
+    {
+      name: 'Select',
+      nameHTMLEl:
+    '<select><option value="value1">Значение 1</option><option value="value2">Значение 2</option><option value="value3">Значение 3</option></select>',
+    },
+  ],
   formBuilderArray: [],
 };
 

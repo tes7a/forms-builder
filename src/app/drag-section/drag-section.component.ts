@@ -11,4 +11,5 @@ export class DragSectionComponent {
   dragArray$ = this.store.select(selectDragArray);
 
   constructor(private store: Store) { }
+
 }

@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./accordion.component.scss'],
 })
 export class AccordionComponent {
-  items = ['Item'];
+  items = [''];
 
   expandedIndex = 0;
 }

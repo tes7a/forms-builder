@@ -1,4 +1,8 @@
 <ul class="form-builder-container" cdkDropList (cdkDropListDropped)="onDrop($event)" [cdkDropListData]="formBuilderArray$ | async">
-  <li *ngFor="let item of formBuilderArray$ | async" cdkDrag [innerHtml]="item.nameHTMLEl | sanitize">
+  <li *ngFor="let item of formBuilderArray$ | async" cdkDrag >
+    <div [innerHtml]="item.nameHTMLEl | sanitize"></div>
+    <div>
+      <button>Settings</button>
+    </div>
   </li>
 </ul>

@@ -7,7 +7,7 @@
 
   color: black;
 
-  li {
+  li{
     margin: 0;
     padding: 18px 16px;
 
@@ -55,3 +55,53 @@
 .cdk-drag-animating {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
+
+
+//style for elements
+// button {
+  //   display: inline-block;
+  //   padding: 6px 12px;
+  //   margin-bottom: 0;
+
+  //   color: #fff;
+  //   background-color: #3e3f3a;
+  //   box-shadow: 10px 5px 9px rgb(184, 184, 184);
+
+  //   font-size: 14px;
+  //   font-weight: 400;
+  //   line-height: 1.42857143;
+  //   text-align: center;
+
+  //   white-space: nowrap;
+  //   vertical-align: middle;
+
+  //   touch-action: manipulation;
+  //   cursor: pointer;
+
+  //   -webkit-user-select: none;
+  //   user-select: none;
+
+  //   background-image: none;
+  //   border-radius: 4px;
+  // }
+
+  // input {
+  //   border:1px solid #3e3f3a;
+  //   border-radius: 4px;
+  //   padding: 5px 7px;
+  //   box-shadow: 10px 5px 9px rgb(184, 184, 184);
+  // }
+
+  // textarea {
+  //   border:1px solid #3e3f3a;
+  //   border-radius: 4px;
+  //   padding: 5px 7px;
+  //   box-shadow: 10px 5px 9px rgb(184, 184, 184);
+  // }
+
+  // select {
+  //   border:1px solid #3e3f3a;
+  //   border-radius: 4px;
+  //   padding: 5px 7px;
+  //   box-shadow: 10px 5px 9px rgb(184, 184, 184);
+  // }
