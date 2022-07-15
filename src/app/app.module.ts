@@ -26,6 +26,7 @@ import { BuilderComponent } from './builder/builder.component';
 import { reducers, metaReducers } from './reducers';
 import { environment } from '../environments/environment';
 import { AppEffects } from './app.effects';
+import { SanitizePipe } from './Pipe/sanitize.pipe';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AppEffects } from './app.effects';
     DragSectionComponent,
     AuthComponent,
     BuilderComponent,
+    SanitizePipe,
   ],
   imports: [
     BrowserModule,

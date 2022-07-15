@@ -1,6 +1,5 @@
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Store } from '@ngrx/store';
 import { selectFormBuilderArray } from '../reducers/actions/builder-actions';
 
@@ -12,12 +11,9 @@ import { selectFormBuilderArray } from '../reducers/actions/builder-actions';
 export class FormBuilderComponent {
   formBuilderArray$ = this.store.select(selectFormBuilderArray);
 
-  htmlEl!: SafeHtml;
-
-  constructor(private store: Store, private sanitizer: DomSanitizer) {
+  constructor(private store: Store) {
   }
 
-  // eslint-disable-next-line class-methods-use-this
   onDrop(event: CdkDragDrop<{
     name: string,
     nameHTMLEl: string
@@ -30,16 +26,5 @@ export class FormBuilderComponent {
         event.currentIndex,
       );
     }
-    this.formBuilderArray$.subscribe((el) => {
-      let tags: any = [];
-      el?.forEach((e) => {
-        const tag = e.nameHTMLEl;
-        tags = [...tags, tag];
-      });
-      console.log(el);
-      console.log(tags);
-
-      this.htmlEl = this.sanitizer.bypassSecurityTrustHtml(tags);
-    });
   }
 }
