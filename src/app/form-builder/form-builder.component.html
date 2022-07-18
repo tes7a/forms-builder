@@ -2,7 +2,7 @@
   <li *ngFor="let item of formBuilderArray$ | async" cdkDrag >
     <div [innerHtml]="item.nameHTMLEl | sanitize"></div>
     <div>
-      <button>Settings</button>
+      <button (click)="onShow()">Settings</button>
     </div>
   </li>
 </ul>

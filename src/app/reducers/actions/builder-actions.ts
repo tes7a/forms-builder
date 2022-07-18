@@ -1,19 +1,13 @@
 import {
-  createAction, createFeatureSelector, createReducer, createSelector, on,
+  createAction, createFeatureSelector, createReducer, createSelector, on, props,
 } from '@ngrx/store';
 
-export const map = createAction('[BUILDER] map');
+// actions
 
-export interface BuilderState {
-  dragArray: {
-    name: string,
-    nameHTMLEl: string
-  }[],
-  formBuilderArray: {
-    name: string,
-    nameHTMLEl: string
-  }[] | null,
-}
+export const setShow = createAction('[SET-SHOW]  setShow');
+export const addElement = createAction('[ADD-ELEMENT] addElement', props<{ elements: Element[] }>());
+
+// state
 
 export const initialState: BuilderState = {
   dragArray: [
@@ -24,19 +18,28 @@ export const initialState: BuilderState = {
     {
       name: 'Select',
       nameHTMLEl:
-    '<select><option value="value1">Значение 1</option><option value="value2">Значение 2</option><option value="value3">Значение 3</option></select>',
+        '<select><option value="value1">Значение 1</option><option value="value2">Значение 2</option><option value="value3">Значение 3</option></select>',
     },
   ],
   formBuilderArray: [],
+  show: false,
 };
+
+// reducer
 
 export const builderReducer = createReducer(
   initialState,
-  on(map, (state) => ({
-    ...state,
-    formBuilderArray: state.dragArray.map((el) => el),
-  })),
+  on(setShow, (state): BuilderState => ({ ...state, show: !state.show })),
+  on(
+    addElement,
+    (state, action): BuilderState => ({
+      ...state,
+      formBuilderArray: [...action.elements],
+    }),
+  ),
 );
+
+// selectors
 
 export const selectFeature = createFeatureSelector<BuilderState>('builder');
 
@@ -49,3 +52,27 @@ export const selectDragArray = createSelector(
   selectFeature,
   (state) => state.dragArray.map((el) => el),
 );
+
+export const selectShow = createSelector(
+  selectFeature,
+  (state) => state.show,
+);
+
+// types
+
+export interface BuilderState {
+  dragArray: {
+    name: string,
+    nameHTMLEl: string
+  }[],
+  formBuilderArray: {
+    name: string,
+    nameHTMLEl: string
+  }[] | null,
+  show: boolean,
+}
+
+export interface Element {
+  name: string;
+  nameHTMLEl: string;
+}
