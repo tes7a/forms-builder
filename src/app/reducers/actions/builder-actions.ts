@@ -87,7 +87,8 @@ export const initialState: BuilderState = {
   ],
   formBuilder: [],
   show: false,
-  accordion: null,
+  accordionItem: [],
+  accordionData: null,
 };
 
 // reducer
@@ -104,8 +105,8 @@ export const builderReducer = createReducer(
   ),
   on(selectElement, (state, action): BuilderState => {
     const arr = state.formBuilder?.filter((el) => el.id === action.id) || [];
-    const { styles } = arr[0];
-    return { ...state, accordion: styles };
+    const { styles, name } = arr[0];
+    return { ...state, accordionItem: [name], accordionData: styles };
   }),
 );
 
@@ -128,6 +129,16 @@ export const selectShow = createSelector(
   (state) => state.show,
 );
 
+export const selectAccordionItem = createSelector(
+  selectFeature,
+  (state) => state.accordionItem,
+);
+
+export const selectStyles = createSelector(
+  selectFeature,
+  (state) => state.accordionData,
+);
+
 // types
 
 export interface BuilderState {
@@ -138,7 +149,8 @@ export interface BuilderState {
   }[],
   formBuilder: Element[] | null,
   show: boolean,
-  accordion: Styles | null
+  accordionItem: string [] | null
+  accordionData: Styles | null
 }
 
 export interface Element {
@@ -146,6 +158,7 @@ export interface Element {
   nameHTMLEl: string,
   id: string,
   styles: Styles
+
 }
 export interface Styles {
   placeholderText: string,

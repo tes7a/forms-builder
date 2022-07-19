@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectShow } from '../reducers/actions/builder-actions';
+import { selectAccordionItem, selectShow, selectStyles } from '../reducers/actions/builder-actions';
 
 @Component({
   selector: 'app-accordion',
@@ -8,11 +8,11 @@ import { selectShow } from '../reducers/actions/builder-actions';
   styleUrls: ['./accordion.component.scss'],
 })
 export class AccordionComponent {
-  items = [''];
-
-  expandedIndex = 0;
+  accordionItem$ = this.store.select(selectAccordionItem);
 
   show$ = this.store.select(selectShow);
+
+  accordionData$ = this.store.select(selectStyles);
 
   constructor(private store: Store) { }
 }

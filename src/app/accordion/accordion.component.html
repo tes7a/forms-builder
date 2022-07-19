@@ -1,7 +1,7 @@
 <div class="accordion-container">
   <cdk-accordion *ngIf="show$ | async" class="example-accordion">
     <cdk-accordion-item
-      *ngFor="let item of items; let index = index;"
+      *ngFor="let item of accordionItem$ | async; let index = index;"
       #accordionItem="cdkAccordionItem"
       class="example-accordion-item"
       role="button"
@@ -21,7 +21,11 @@
         [style.display]="accordionItem.expanded ? '' : 'none'"
         [attr.id]="'accordion-body-' + index"
         [attr.aria-labelledby]="'accordion-header-' + index">
-        Lorem ipsum dolor sit amet consectetu
+        <div>Style: </div>
+        <div>Width: </div>
+        <div>Height: </div>
+        <div>TextAlign: </div>
+        <div></div>
       </div>
     </cdk-accordion-item>
   </cdk-accordion>
