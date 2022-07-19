@@ -2,7 +2,7 @@ import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
-  addElement, selectFormBuilderArray, setShow, Element,
+  dragElement, selectFormBuilder, setShow, Element, selectElement,
 } from '../reducers/actions/builder-actions';
 
 @Component({
@@ -11,12 +11,17 @@ import {
   styleUrls: ['./form-builder.component.scss'],
 })
 export class FormBuilderComponent {
-  formBuilderArray$ = this.store.select(selectFormBuilderArray);
+  formBuilder$ = this.store.select(selectFormBuilder);
 
   constructor(private store: Store) { }
 
-  onShow(): void {
+  onShow(id: string): void {
     this.store.dispatch(setShow());
+    this.onSelect(id);
+  }
+
+  onSelect(id: string) {
+    this.store.dispatch(selectElement({ id }));
   }
 
   onDrop(event: CdkDragDrop<Element[] | null>): void {
@@ -28,7 +33,7 @@ export class FormBuilderComponent {
         event.currentIndex,
       );
 
-      this.store.dispatch(addElement(
+      this.store.dispatch(dragElement(
         { elements: event.container.data },
       ));
     }

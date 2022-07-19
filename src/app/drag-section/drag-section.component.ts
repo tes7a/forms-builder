@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectDragArray } from '../reducers/actions/builder-actions';
+import { selectMoveElements } from '../reducers/actions/builder-actions';
 
 @Component({
   selector: 'app-drag-section',
@@ -8,7 +8,7 @@ import { selectDragArray } from '../reducers/actions/builder-actions';
   styleUrls: ['./drag-section.component.scss'],
 })
 export class DragSectionComponent {
-  dragArray$ = this.store.select(selectDragArray);
+  moveElements$ = this.store.select(selectMoveElements);
 
   constructor(private store: Store) { }
 }
