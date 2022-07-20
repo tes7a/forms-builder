@@ -5,7 +5,8 @@ import * as uuid from 'uuid';
 
 // actions
 
-export const setShow = createAction('[SET-SHOW]  setShow');
+export const openAccordion = createAction('[OPEN-ACCORDION]  openAccordion');
+export const closeAccordion = createAction('[CLOSE-ACCORDION]  closeAccordion');
 export const dragElement = createAction('[ADD-ELEMENT] dragElement', props<{ elements: Element[] }>());
 export const selectElement = createAction('[SELECT-ELEMENT] selectElement', props<{ id: string }>());
 export const deleteElement = createAction('[DELETE-ELEMENT] deleteElement', props<{ id: string }>());
@@ -16,7 +17,7 @@ export const initialState: BuilderState = {
   moveElements: [
     {
       name: 'Button',
-      nameHTMLEl: '<button>Button</button>',
+      nameHTMLEl: '<button class="form-btn-default">Button</button>',
       styles: {
         placeholderText: '',
         width: '',
@@ -30,7 +31,7 @@ export const initialState: BuilderState = {
     },
     {
       name: 'Input',
-      nameHTMLEl: '<input placeholder="Text"/>',
+      nameHTMLEl: '<input placeholder="Text" class="form-inp-default"/>',
       styles: {
         placeholderText: '',
         width: '',
@@ -58,7 +59,7 @@ export const initialState: BuilderState = {
     },
     {
       name: 'Textarea',
-      nameHTMLEl: '<textarea placeholder="Text"></textarea>',
+      nameHTMLEl: '<textarea placeholder="Text" class="form-inp-txtar"></textarea>',
       styles: {
         placeholderText: '',
         width: '',
@@ -73,7 +74,7 @@ export const initialState: BuilderState = {
     {
       name: 'Select',
       nameHTMLEl:
-        '<select><option value="value1">Значение 1</option><option value="value2">Значение 2</option><option value="value3">Значение 3</option></select>',
+        '<select class="form-inp-sl"><option value="value1">Значение 1</option><option value="value2">Значение 2</option><option value="value3">Значение 3</option></select>',
       styles: {
         placeholderText: '',
         width: '',
@@ -96,7 +97,8 @@ export const initialState: BuilderState = {
 
 export const builderReducer = createReducer(
   initialState,
-  on(setShow, (state): BuilderState => ({ ...state, show: !state.show })),
+  on(openAccordion, (state): BuilderState => ({ ...state, show: true })),
+  on(closeAccordion, (state): BuilderState => ({ ...state, show: false })),
   on(
     dragElement,
     (state, action): BuilderState => ({

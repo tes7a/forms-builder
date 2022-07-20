@@ -2,7 +2,7 @@ import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
-  dragElement, selectFormBuilder, setShow, Element, selectElement, deleteElement,
+  dragElement, selectFormBuilder, openAccordion, Element, selectElement, deleteElement,
 } from '../reducers/actions/builder-actions';
 
 @Component({
@@ -17,7 +17,7 @@ export class FormBuilderComponent {
   constructor(private store: Store) { }
 
   onShow(id: string): void {
-    this.store.dispatch(setShow());
+    this.store.dispatch(openAccordion());
     this.onSelect(id);
   }
 

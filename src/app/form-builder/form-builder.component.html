@@ -1,13 +1,13 @@
 <ul class="form-builder-container" cdkDropList (cdkDropListDropped)="onDrop($event)"
   [cdkDropListData]="formBuilder$ | async">
-  <li *ngFor="let item of formBuilder$ | async" cdkDrag>
+  <li *ngFor="let item of formBuilder$ | ngrxPush" cdkDrag>
     <div class="form-builder-element">
       <div [innerHtml]="item.nameHTMLEl | sanitize"></div>
       <div>
-        <mat-icon class="element-setting" (click)="onShow(item.id)">
+        <mat-icon class="form-builder-icon" (click)="onShow(item.id)">
           settings
         </mat-icon>
-        <mat-icon class="element-delete" (click)="onDelete(item.id)">delete</mat-icon>
+        <mat-icon class="form-builder-icon" (click)="onDelete(item.id)">delete</mat-icon>
       </div>
     </div>
   </li>

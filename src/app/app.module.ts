@@ -16,6 +16,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { LetModule, PushModule } from '@ngrx/component';
 import { AppComponent } from './app.component';
 import { AccordionComponent } from './accordion/accordion.component';
 import { FormBuilderComponent } from './form-builder/form-builder.component';
@@ -53,6 +54,8 @@ import { SanitizePipe } from './Pipe/sanitize.pipe';
     MatInputModule,
     MatIconModule,
     MatFormFieldModule,
+    LetModule,
+    PushModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
     }),

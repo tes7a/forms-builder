@@ -27,54 +27,56 @@
       display: flex;
       justify-content: space-between;
 
-      button {
+
+      .form-btn-default {
         display: inline-block;
-        padding: 6px 12px;
-        margin-bottom: 0;
+          padding: 6px 12px;
+          margin-bottom: 0;
 
-        color: #fff;
-        background-color: #3e3f3a;
-        box-shadow: 10px 5px 9px rgb(184, 184, 184);
+          color: #fff;
+          background-color: #3e3f3a;
+          box-shadow: 10px 5px 9px rgb(184, 184, 184);
 
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 1.42857143;
-        text-align: center;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.42857143;
+          text-align: center;
 
-        white-space: nowrap;
-        vertical-align: middle;
+          white-space: nowrap;
+          vertical-align: middle;
 
-        touch-action: manipulation;
-        cursor: pointer;
+          touch-action: manipulation;
+          cursor: pointer;
 
-        -webkit-user-select: none;
-        user-select: none;
+          -webkit-user-select: none;
+          user-select: none;
 
-        background-image: none;
-        border-radius: 4px;
+          background-image: none;
+          border-radius: 4px;
       }
 
-      input {
+      .form-inp-default {
         border: 1px solid #3e3f3a;
         border-radius: 4px;
         padding: 5px 7px;
         box-shadow: 10px 5px 9px rgb(184, 184, 184);
       }
 
-      textarea {
+      .form-inp-txtar {
         border: 1px solid #3e3f3a;
         border-radius: 4px;
         padding: 5px 7px;
         box-shadow: 10px 5px 9px rgb(184, 184, 184);
       }
 
-      select {
+      .form-inp-sl {
         border: 1px solid #3e3f3a;
         border-radius: 4px;
         padding: 5px 7px;
         box-shadow: 10px 5px 9px rgb(184, 184, 184);
       }
-      .element-setting, .element-delete {
+      .form-builder-icon{
+        margin: 0 5px;
         cursor: pointer;
         &:hover {
           color: rgb(82, 79, 79);
