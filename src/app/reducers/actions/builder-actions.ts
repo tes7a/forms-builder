@@ -8,6 +8,7 @@ import * as uuid from 'uuid';
 export const setShow = createAction('[SET-SHOW]  setShow');
 export const dragElement = createAction('[ADD-ELEMENT] dragElement', props<{ elements: Element[] }>());
 export const selectElement = createAction('[SELECT-ELEMENT] selectElement', props<{ id: string }>());
+export const deleteElement = createAction('[DELETE-ELEMENT] deleteElement', props<{ id: string }>());
 
 // state
 
@@ -108,6 +109,10 @@ export const builderReducer = createReducer(
     const { styles, name } = arr[0];
     return { ...state, accordionItem: [name], accordionData: styles };
   }),
+  on(deleteElement, (state, action): BuilderState => ({
+    ...state,
+    formBuilder: state.formBuilder?.filter((el) => el.id !== action.id) || null,
+  })),
 );
 
 // selectors

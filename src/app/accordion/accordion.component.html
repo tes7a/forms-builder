@@ -21,10 +21,10 @@
         [style.display]="accordionItem.expanded ? '' : 'none'"
         [attr.id]="'accordion-body-' + index"
         [attr.aria-labelledby]="'accordion-header-' + index">
-        <div>Style: </div>
-        <div>Width: </div>
-        <div>Height: </div>
-        <div>TextAlign: </div>
+        <div>Style: {{accDataItem?.borderStyle}}</div>
+        <div>Width: {{accDataItem?.width}}</div>
+        <div>Height: {{accDataItem?.height}}</div>
+        <div>TextAlign: {{accDataItem?.placeholderText}}</div>
         <div></div>
       </div>
     </cdk-accordion-item>
