@@ -10,24 +10,19 @@
       [attr.aria-expanded]="accordionItem.expanded"
       [attr.aria-controls]="'accordion-body-' + index">
       <div class="accordion-item-header">
-        <div class="accordion-item-name">{{ item }}</div>
+        <div class="accordion-item-name">{{ item.name }}</div>
         <div>
           <mat-icon class="accordion-item-icon" (click)="accordionItem.toggle()">tune</mat-icon>
           <mat-icon class="accordion-item-icon" (click)="onClose()">close</mat-icon>
         </div>
       </div>
       <div
-      *ngrxLet="accordionData$ as ac"
         class="accordion-item-body"
         role="region"
         [style.display]="accordionItem.expanded ? '' : 'none'"
         [attr.id]="'accordion-body-' + index"
         [attr.aria-labelledby]="'accordion-header-' + index">
-        <div>Style: {{ac?.borderStyle}}</div>
-        <div>Width: {{ac?.width}}</div>
-        <div>Height: {{ac?.height}}</div>
-        <div>TextAlign: {{ac?.placeholderText}}</div>
-        <div></div>
+        <div>Style: <input (change)="onInput($event, item.id)" [style.height]="'20px'"/> </div>
       </div>
     </cdk-accordion-item>
   </cdk-accordion>

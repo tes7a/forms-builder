@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
+  changeStyle,
   closeAccordion,
-  selectAccordionItem, selectShow, selectStyles,
+  selectAccordionItem, selectShow,
 } from '../reducers/actions/builder-actions';
 
 @Component({
@@ -15,11 +16,17 @@ export class AccordionComponent {
 
   show$ = this.store.select(selectShow);
 
-  accordionData$ = this.store.select(selectStyles);
-
-  constructor(private store: Store) { }
+  constructor(private store: Store) {
+  }
 
   onClose(): void {
     this.store.dispatch(closeAccordion());
+  }
+
+  onInput(event: Event, id: string) {
+    this.store.dispatch(changeStyle({
+      id,
+      value: (<HTMLInputElement>event.target).value,
+    }));
   }
 }

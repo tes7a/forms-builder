@@ -10,6 +10,7 @@ export const closeAccordion = createAction('[CLOSE-ACCORDION]  closeAccordion');
 export const dragElement = createAction('[ADD-ELEMENT] dragElement', props<{ elements: Element[] }>());
 export const selectElement = createAction('[SELECT-ELEMENT] selectElement', props<{ id: string }>());
 export const deleteElement = createAction('[DELETE-ELEMENT] deleteElement', props<{ id: string }>());
+export const changeStyle = createAction('[CHANGE-STYLE] changeStyle', props<{ value: string, id: string }>());
 
 // state
 
@@ -18,79 +19,28 @@ export const initialState: BuilderState = {
     {
       name: 'Button',
       nameHTMLEl: '<button class="form-btn-default">Button</button>',
-      styles: {
-        placeholderText: '',
-        width: '',
-        height: '',
-        required: '',
-        borderStyle: '',
-        fontSize: '',
-        fontWeight: '',
-        colorRGB: '',
-      },
     },
     {
       name: 'Input',
       nameHTMLEl: '<input placeholder="Text" class="form-inp-default"/>',
-      styles: {
-        placeholderText: '',
-        width: '',
-        height: '',
-        required: '',
-        borderStyle: '',
-        fontSize: '',
-        fontWeight: '',
-        colorRGB: '',
-      },
     },
     {
       name: 'CheckBox',
       nameHTMLEl: '<input type="checkbox"/> <label>Options</label>',
-      styles: {
-        placeholderText: '',
-        width: '',
-        height: '',
-        required: '',
-        borderStyle: '',
-        fontSize: '',
-        fontWeight: '',
-        colorRGB: '',
-      },
     },
     {
       name: 'Textarea',
       nameHTMLEl: '<textarea placeholder="Text" class="form-inp-txtar"></textarea>',
-      styles: {
-        placeholderText: '',
-        width: '',
-        height: '',
-        required: '',
-        borderStyle: '',
-        fontSize: '',
-        fontWeight: '',
-        colorRGB: '',
-      },
     },
     {
       name: 'Select',
       nameHTMLEl:
         '<select class="form-inp-sl"><option value="value1">Значение 1</option><option value="value2">Значение 2</option><option value="value3">Значение 3</option></select>',
-      styles: {
-        placeholderText: '',
-        width: '',
-        height: '',
-        required: '',
-        borderStyle: '',
-        fontSize: '',
-        fontWeight: '',
-        colorRGB: '',
-      },
     },
   ],
   formBuilder: [],
   show: false,
   accordionItem: [],
-  accordionData: null,
 };
 
 // reducer
@@ -108,13 +58,21 @@ export const builderReducer = createReducer(
   ),
   on(selectElement, (state, action): BuilderState => {
     const arr = state.formBuilder?.filter((el) => el.id === action.id) || [];
-    const { styles, name } = arr[0];
-    return { ...state, accordionItem: [name], accordionData: styles };
+    const { name, id } = arr[0];
+    return { ...state, accordionItem: [{ name, id }] };
   }),
   on(deleteElement, (state, action): BuilderState => ({
     ...state,
     formBuilder: state.formBuilder?.filter((el) => el.id !== action.id) || null,
   })),
+  on(changeStyle, (state, action): BuilderState => (
+    {
+      ...state,
+      formBuilder: state.formBuilder?.map((el) => (
+        el.id === action.id ? { ...el, nameHTMLEl: '' }
+          : el)) || null,
+    }
+  )),
 );
 
 // selectors
@@ -141,39 +99,20 @@ export const selectAccordionItem = createSelector(
   (state) => state.accordionItem,
 );
 
-export const selectStyles = createSelector(
-  selectFeature,
-  (state) => state.accordionData,
-);
-
 // types
 
 export interface BuilderState {
   moveElements: {
     name: string,
     nameHTMLEl: string,
-    styles: Styles,
   }[],
   formBuilder: Element[] | null,
   show: boolean,
-  accordionItem: string [] | null
-  accordionData: Styles | null
+  accordionItem: { name: string, id: string }[] | null
 }
 
 export interface Element {
   name: string,
   nameHTMLEl: string,
   id: string,
-  styles: Styles
-
-}
-export interface Styles {
-  placeholderText: string,
-  width: string,
-  height: string,
-  required: string,
-  borderStyle: string,
-  fontSize: string,
-  fontWeight: string,
-  colorRGB: string,
 }
