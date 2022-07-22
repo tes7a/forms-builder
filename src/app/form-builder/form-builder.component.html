@@ -2,7 +2,7 @@
   [cdkDropListData]="formBuilder$ | async">
   <li *ngFor="let item of formBuilder$ | ngrxPush" cdkDrag>
     <div class="form-builder-element">
-      <div [innerHtml]="item.nameHTMLEl | sanitize"></div>
+      <div [innerHtml]="item.nameHTMLEl | sanitize"> </div>
       <div>
         <mat-icon class="form-builder-icon" (click)="onShow(item.id)">
           settings

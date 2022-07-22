@@ -1,8 +1,10 @@
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, ViewEncapsulation } from '@angular/core';
+import {
+  Component, ViewEncapsulation,
+} from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
-  dragElement, selectFormBuilder, openAccordion, Element, selectElement, deleteElement,
+  selectFormBuilder, openAccordion, Element, selectElement, deleteElement, dragElement,
 } from '../reducers/actions/builder-actions';
 
 @Component({
