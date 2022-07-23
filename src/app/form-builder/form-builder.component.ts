@@ -1,6 +1,6 @@
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import {
-  Component, ViewEncapsulation,
+  Component, ElementRef, ViewChild, ViewEncapsulation,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
@@ -14,9 +14,14 @@ import {
   encapsulation: ViewEncapsulation.None,
 })
 export class FormBuilderComponent {
+  @ViewChild('btn') divView!: ElementRef;
+
   formBuilder$ = this.store.select(selectFormBuilder);
 
-  constructor(private store: Store) { }
+  inputTag: HTMLElement | null = document.getElementById('btn');
+
+  constructor(private store: Store) {
+  }
 
   onShow(id: string): void {
     this.store.dispatch(openAccordion());
