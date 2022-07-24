@@ -18,7 +18,7 @@ export const initialState: BuilderState = {
   moveElements: [
     {
       name: 'Button',
-      nameHTMLEl: '<button class="form-btn-default" id="btn">Button</button>',
+      nameHTMLEl: '<button class="form-btn-default" #btn id="btn">Button</button>',
       styles: {
         idHTML: '#btn',
         height: '',

@@ -28,6 +28,7 @@ import { reducers, metaReducers } from './reducers';
 import { environment } from '../environments/environment';
 import { AppEffects } from './app.effects';
 import { SanitizePipe } from './Pipe/sanitize.pipe';
+import { ChangeStyleDirective } from './directives/changeStyle.directive';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { SanitizePipe } from './Pipe/sanitize.pipe';
     AuthComponent,
     BuilderComponent,
     SanitizePipe,
+    ChangeStyleDirective,
   ],
   imports: [
     BrowserModule,
