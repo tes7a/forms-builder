@@ -1,11 +1,12 @@
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import {
-  AfterViewInit,
-  Component, ElementRef, ViewChild, ViewEncapsulation,
+  Component, ViewEncapsulation,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
-  selectFormBuilder, openAccordion, Element, selectElement, deleteElement, dragElement,
+  selectFormBuilder, openAccordion, Element,
+  selectElement, deleteElement,
+  dragElement, selectAccordionItem, Styles,
 } from '../reducers/actions/builder-actions';
 
 @Component({
@@ -17,8 +18,11 @@ import {
 export class FormBuilderComponent {
   formBuilder$ = this.store.select(selectFormBuilder);
 
-  constructor(private store: Store) {
-  }
+  AccordionData$ = this.store.select(selectAccordionItem);
+
+  AccordionItem!: Styles;
+
+  constructor(private store: Store) { }
 
   onShow(id: string): void {
     this.store.dispatch(openAccordion());

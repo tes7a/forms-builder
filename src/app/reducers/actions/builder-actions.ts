@@ -18,23 +18,21 @@ export const initialState: BuilderState = {
   moveElements: [
     {
       name: 'Button',
-      nameHTMLEl: '<button class="form-btn-default" #btn id="btn">Button</button>',
+      nameHTMLEl: '<button appChangeStyle #btn class="form-btn-default">Button</button>',
       styles: {
-        idHTML: '#btn',
         height: '',
         width: '',
-        placeholderText: '',
+        placeholderText: 'Button',
         borderStyle: '',
         fontSize: '',
-        fontWeightSelect: '',
-        colorInputRGB: '',
+        fontWeightSelect: '900',
+        colorInputRGB: 'red',
       },
     },
     {
       name: 'Input',
-      nameHTMLEl: '<input placeholder="Text" id="input" class="form-inp-default"/>',
+      nameHTMLEl: '<input placeholder="Text" class="form-inp-default"/>',
       styles: {
-        idHTML: '#input',
         height: '',
         width: '',
         placeholderText: '',
@@ -47,9 +45,8 @@ export const initialState: BuilderState = {
     },
     {
       name: 'CheckBox',
-      nameHTMLEl: '<input type="checkbox" id="check"/> <label>Options</label>',
+      nameHTMLEl: '<input type="checkbox"/> <label>Options</label>',
       styles: {
-        idHTML: '#check',
         height: '',
         width: '',
         placeholderText: '',
@@ -61,9 +58,8 @@ export const initialState: BuilderState = {
     },
     {
       name: 'Textarea',
-      nameHTMLEl: '<textarea placeholder="Text" id="txtar" class="form-inp-txtar"></textarea>',
+      nameHTMLEl: '<textarea placeholder="Text" class="form-inp-txtar"></textarea>',
       styles: {
-        idHTML: '#txtar',
         height: '',
         width: '',
         placeholderText: '',
@@ -77,9 +73,8 @@ export const initialState: BuilderState = {
     {
       name: 'Select',
       nameHTMLEl:
-        '<select id="select" class="form-inp-sl"><option value="value1">Значение 1</option><option value="value2">Значение 2</option><option value="value3">Значение 3</option></select>',
+        '<select class="form-inp-sl"><option value="value1">Значение 1</option><option value="value2">Значение 2</option><option value="value3">Значение 3</option></select>',
       styles: {
-        idHTML: '#select',
         height: '',
         width: '',
         placeholderText: '',
@@ -110,8 +105,8 @@ export const builderReducer = createReducer(
   ),
   on(selectElement, (state, action): BuilderState => {
     const arr = state.formBuilder?.filter((el) => el.id === action.id) || [];
-    const { name, id } = arr[0];
-    return { ...state, accordionItem: [{ name, id }] };
+    const { name, id, styles } = arr[0];
+    return { ...state, accordionItem: [{ name, id, styles }] };
   }),
   on(deleteElement, (state, action): BuilderState => ({
     ...state,
@@ -151,6 +146,11 @@ export const selectAccordionItem = createSelector(
   (state) => state.accordionItem,
 );
 
+export const selectStylesItem = createSelector(
+  selectFeature,
+  (state) => state.accordionItem,
+);
+
 // types
 
 export interface BuilderState {
@@ -158,7 +158,6 @@ export interface BuilderState {
     name: string,
     nameHTMLEl: string,
     styles: {
-      idHTML: string,
       height: string,
       width: string,
       placeholderText: string,
@@ -171,22 +170,29 @@ export interface BuilderState {
   }[],
   formBuilder: Element[] | null,
   show: boolean,
-  accordionItem: { name: string, id: string }[] | null
+  accordionItem: Accordion[] | null,
 }
 
 export interface Element {
   name: string,
   nameHTMLEl: string,
-  styles: {
-    idHTML: string,
-    height: string,
-    width: string,
-    placeholderText: string,
-    required?: string,
-    borderStyle: string,
-    fontSize: string,
-    fontWeightSelect: string,
-    colorInputRGB: string,
-  }
+  styles: Styles,
   id: string,
+}
+
+export interface Accordion {
+  name: string,
+  id: string,
+  styles: Styles,
+}
+
+export interface Styles {
+  height: string,
+  width: string,
+  placeholderText: string,
+  required?: string,
+  borderStyle: string,
+  fontSize: string,
+  fontWeightSelect: string,
+  colorInputRGB: string,
 }

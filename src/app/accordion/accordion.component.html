@@ -1,7 +1,7 @@
 <div class="accordion-container">
   <cdk-accordion *ngIf="show$ | ngrxPush" class="accordion">
     <cdk-accordion-item
-      *ngFor="let item of accordionItem$ | async; let index = index;"
+      *ngFor="let item of accordionItem$ | async; let index = index;"       
       #accordionItem="cdkAccordionItem"
       class="accordion-item"
       role="button"
