@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import {
   changeStyle,
   closeAccordion,
-  selectAccordionItem, selectShow,
+  selectStylesItem, selectShow,
 } from '../reducers/actions/builder-actions';
 
 @Component({
@@ -12,7 +12,7 @@ import {
   styleUrls: ['./accordion.component.scss'],
 })
 export class AccordionComponent {
-  accordionItem$ = this.store.select(selectAccordionItem);
+  accordionItem$ = this.store.select(selectStylesItem);
 
   show$ = this.store.select(selectShow);
 

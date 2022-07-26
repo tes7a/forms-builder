@@ -1,12 +1,14 @@
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import {
-  Component, ViewEncapsulation,
+  Component, ElementRef, Renderer2, ViewChild, ViewEncapsulation,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { filter } from 'rxjs';
 import {
   selectFormBuilder, openAccordion, Element,
   selectElement, deleteElement,
-  dragElement, selectAccordionItem, Styles,
+  dragElement,
+  selectMoveElements,
 } from '../reducers/actions/builder-actions';
 
 @Component({
@@ -16,13 +18,13 @@ import {
   encapsulation: ViewEncapsulation.None,
 })
 export class FormBuilderComponent {
+  moveElements$ = this.store.select(selectMoveElements);
+
   formBuilder$ = this.store.select(selectFormBuilder);
 
-  AccordionData$ = this.store.select(selectAccordionItem);
+  @ViewChild('div') div!: ElementRef;
 
-  AccordionItem!: Styles;
-
-  constructor(private store: Store) { }
+  constructor(private store: Store, private r: Renderer2) { }
 
   onShow(id: string): void {
     this.store.dispatch(openAccordion());
@@ -50,5 +52,15 @@ export class FormBuilderComponent {
         { elements: event.container.data },
       ));
     }
+  }
+
+  onLoaded(arg: { el: ElementRef }): void {
+    const newDiv = this.r.createElement('button');
+    const textEle = this.r.createText('Button');
+    this.r.appendChild(newDiv, textEle);
+    this.r.addClass(newDiv, 'form-btn-default');
+    // this.r.setStyle(newDiv, 'border', '1px solid red');
+    // this.r.setAttribute(newDiv, 'type', 'checkbox');
+    this.r.appendChild(arg.el.nativeElement, newDiv);
   }
 }

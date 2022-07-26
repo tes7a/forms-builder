@@ -18,7 +18,10 @@ export const initialState: BuilderState = {
   moveElements: [
     {
       name: 'Button',
-      nameHTMLEl: '<button appChangeStyle #btn class="form-btn-default">Button</button>',
+      props: {
+        nameHTML: 'button',
+        type: '',
+      },
       styles: {
         height: '',
         width: '',
@@ -31,7 +34,10 @@ export const initialState: BuilderState = {
     },
     {
       name: 'Input',
-      nameHTMLEl: '<input placeholder="Text" class="form-inp-default"/>',
+      props: {
+        nameHTML: 'input',
+        placeholderText: 'Text',
+      },
       styles: {
         height: '',
         width: '',
@@ -44,8 +50,11 @@ export const initialState: BuilderState = {
       },
     },
     {
-      name: 'CheckBox',
-      nameHTMLEl: '<input type="checkbox"/> <label>Options</label>',
+      name: 'Checkbox',
+      props: {
+        nameHTML: 'input',
+        type: 'CheckBox',
+      },
       styles: {
         height: '',
         width: '',
@@ -58,7 +67,10 @@ export const initialState: BuilderState = {
     },
     {
       name: 'Textarea',
-      nameHTMLEl: '<textarea placeholder="Text" class="form-inp-txtar"></textarea>',
+      props: {
+        nameHTML: 'textarea',
+        placeholderText: 'Text',
+      },
       styles: {
         height: '',
         width: '',
@@ -72,8 +84,12 @@ export const initialState: BuilderState = {
     },
     {
       name: 'Select',
-      nameHTMLEl:
-        '<select class="form-inp-sl"><option value="value1">Значение 1</option><option value="value2">Значение 2</option><option value="value3">Значение 3</option></select>',
+      props: {
+        nameHTML: 'select',
+        value1: 'Value 1',
+        value2: 'Value 2',
+        value3: 'Value 3',
+      },
       styles: {
         height: '',
         width: '',
@@ -141,11 +157,6 @@ export const selectShow = createSelector(
   (state) => state.show,
 );
 
-export const selectAccordionItem = createSelector(
-  selectFeature,
-  (state) => state.accordionItem,
-);
-
 export const selectStylesItem = createSelector(
   selectFeature,
   (state) => state.accordionItem,
@@ -156,17 +167,8 @@ export const selectStylesItem = createSelector(
 export interface BuilderState {
   moveElements: {
     name: string,
-    nameHTMLEl: string,
-    styles: {
-      height: string,
-      width: string,
-      placeholderText: string,
-      required?: string,
-      borderStyle: string,
-      fontSize: string,
-      fontWeightSelect: string,
-      colorInputRGB: string,
-    }
+    props: Props,
+    styles: Styles,
   }[],
   formBuilder: Element[] | null,
   show: boolean,
@@ -195,4 +197,13 @@ export interface Styles {
   fontSize: string,
   fontWeightSelect: string,
   colorInputRGB: string,
+}
+
+export interface Props {
+  nameHTML: string,
+  placeholderText?: string,
+  type?: string,
+  value1?: string,
+  value2?: string,
+  value3?: string,
 }
